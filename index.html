@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QCom Intel — India Quick Commerce & Ecommerce News</title>
+  <meta name="description" content="Daily-refreshed news tracker covering Quick Commerce, Ecommerce, FMCG, Retail Tech, and Funding news from India." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+  <!-- ── HEADER ─────────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-icon">⚡</span>
+        <div>
+          <div class="brand-name">QCOM INTEL</div>
+          <div class="brand-sub">India Commerce Intelligence</div>
+        </div>
+      </div>
+      <div class="header-meta">
+        <span class="last-updated" id="lastUpdated">Loading…</span>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">◐</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── TICKER ─────────────────────────────────────────────── -->
+  <div class="ticker-wrap" id="tickerWrap" aria-live="polite">
+    <div class="ticker-label">LIVE</div>
+    <div class="ticker-track" id="tickerTrack">Loading latest headlines…</div>
+  </div>
+
+  <!-- ── MAIN ───────────────────────────────────────────────── -->
+  <main class="main-content">
+
+    <!-- SEARCH + FILTERS -->
+    <section class="controls-bar" aria-label="Filter controls">
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input
+          type="search"
+          id="searchInput"
+          class="search-input"
+          placeholder="Search headlines, sources…"
+          aria-label="Search articles"
+          autocomplete="off"
+        />
+        <button class="search-clear" id="searchClear" aria-label="Clear search">✕</button>
+      </div>
+      <div class="date-filter">
+        <button class="date-btn active" data-days="1">Today</button>
+        <button class="date-btn" data-days="3">3 Days</button>
+        <button class="date-btn" data-days="7">This Week</button>
+        <button class="date-btn" data-days="0">All</button>
+      </div>
+    </section>
+
+    <!-- TOPIC TABS -->
+    <nav class="topic-tabs" id="topicTabs" role="tablist" aria-label="Topic filters">
+      <button class="tab active" data-topic="all" role="tab" aria-selected="true">
+        All <span class="tab-count" id="count-all">—</span>
+      </button>
+      <!-- dynamically populated -->
+    </nav>
+
+    <!-- FEATURED ARTICLE -->
+    <section class="featured-section" id="featuredSection" aria-label="Featured article">
+      <div class="featured-card" id="featuredCard">
+        <div class="loading-state">
+          <div class="spinner"></div>
+          <p>Fetching intelligence…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOP HEADLINES -->
+    <section class="section-block" id="topHeadlinesSection">
+      <div class="section-header">
+        <h2 class="section-title">Top Headlines</h2>
+        <span class="section-line"></span>
+      </div>
+      <div class="headlines-grid" id="topHeadlines"></div>
+    </section>
+
+    <!-- LATEST ARTICLES -->
+    <section class="section-block" id="latestSection">
+      <div class="section-header">
+        <h2 class="section-title">Latest Articles</h2>
+        <span class="section-line"></span>
+      </div>
+      <div class="articles-list" id="articlesList"></div>
+    </section>
+
+    <!-- EMPTY STATE -->
+    <div class="empty-state" id="emptyState" hidden>
+      <div class="empty-icon">📭</div>
+      <p class="empty-title">No articles found</p>
+      <p class="empty-sub">Try a different topic or search term</p>
+    </div>
+
+  </main>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>Built for QCom operators. Refreshed daily via GitHub Actions.</span>
+      <span class="footer-dot">·</span>
+      <span>Sources: ET · Mint · Inc42 · YourStory · Entrackr · BS · FE</span>
+    </div>
+  </footer>
+
+  <!-- ARTICLE MODAL -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Article preview" hidden>
+    <div class="modal-card" id="modalCard">
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
