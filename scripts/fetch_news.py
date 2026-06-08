@@ -4,11 +4,13 @@ News Engine - Daily fetch script
 Pulls RSS feeds, filters for relevance, deduplicates, and writes articles.json
 """
 
+import gzip
 import json
 import os
 import re
 import hashlib
 import logging
+import time
 from datetime import datetime, timezone, timedelta
 from urllib.request import urlopen, Request
 from urllib.error import URLError, HTTPError
@@ -64,19 +66,55 @@ def parse_date(date_str):
     return datetime.now(timezone.utc).isoformat()
 
 
+USER_AGENTS = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15",
+    "Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0",
+]
+
+_ua_index = 0
+
+def next_user_agent():
+    global _ua_index
+    ua = USER_AGENTS[_ua_index % len(USER_AGENTS)]
+    _ua_index += 1
+    return ua
+
+
 def fetch_feed(url, source_name, timeout=15):
     """Fetch and parse a single RSS feed. Returns list of raw article dicts."""
     headers = {
-        "User-Agent": "Mozilla/5.0 (compatible; NewsBot/1.0; +https://github.com)",
-        "Accept": "application/rss+xml, application/xml, text/xml, */*",
+        "User-Agent": next_user_agent(),
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "en-IN,en;q=0.9",
+        "Accept-Encoding": "gzip, deflate",
+        "Connection": "keep-alive",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
     }
     try:
         req = Request(url, headers=headers)
         with urlopen(req, timeout=timeout) as resp:
-            content = resp.read()
-        root = ET.fromstring(content)
-    except (URLError, HTTPError, ET.ParseError) as e:
-        log.warning(f"Failed to fetch {url}: {e}")
+            raw = resp.read()
+            content_encoding = resp.headers.get("Content-Encoding", "")
+        # Decompress if gzip (urlopen doesn't auto-decompress when we set Accept-Encoding)
+        if content_encoding == "gzip" or raw[:2] == b"\x1f\x8b":
+            try:
+                raw = gzip.decompress(raw)
+            except Exception:
+                pass
+        root = ET.fromstring(raw)
+    except HTTPError as e:
+        log.warning(f"HTTP {e.code} fetching {url}")
+        return []
+    except URLError as e:
+        log.warning(f"URL error fetching {url}: {e.reason}")
+        return []
+    except ET.ParseError as e:
+        log.warning(f"XML parse error for {url}: {e}")
+        return []
+    except Exception as e:
+        log.warning(f"Unexpected error fetching {url}: {e}")
         return []
 
     # Handle both RSS and Atom
@@ -230,7 +268,9 @@ def main():
     all_articles = []
     seen = set()
 
-    for feed in feeds:
+    for i, feed in enumerate(feeds):
+        if i > 0:
+            time.sleep(1)  # be polite — avoid rate limits
         raw = fetch_feed(feed["url"], feed["source"], timeout=timeout)
         for art in raw:
             fp = fingerprint(art)
