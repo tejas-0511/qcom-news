@@ -11,7 +11,7 @@
   let allArticles = [];
   let topics      = [];
   let activeTopic = "all";
-  let activeDays  = 1;
+  let activeDays  = 0;
   let searchQuery = "";
   let bookmarks   = new Set(JSON.parse(localStorage.getItem("qcom_bookmarks") || "[]"));
 
