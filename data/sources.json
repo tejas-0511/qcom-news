@@ -1,0 +1,76 @@
+{
+  "feeds": [
+    {
+      "name": "Economic Times - Retail",
+      "url": "https://economictimes.indiatimes.com/industry/services/retail/rssfeeds/13358306.cms",
+      "source": "Economic Times",
+      "active": true
+    },
+    {
+      "name": "Economic Times - Tech",
+      "url": "https://economictimes.indiatimes.com/tech/rssfeeds/13357270.cms",
+      "source": "Economic Times",
+      "active": true
+    },
+    {
+      "name": "Mint - Companies",
+      "url": "https://www.livemint.com/rss/companies",
+      "source": "Mint",
+      "active": true
+    },
+    {
+      "name": "Mint - Industry",
+      "url": "https://www.livemint.com/rss/industry",
+      "source": "Mint",
+      "active": true
+    },
+    {
+      "name": "Inc42 - Ecommerce",
+      "url": "https://inc42.com/tag/ecommerce/feed/",
+      "source": "Inc42",
+      "active": true
+    },
+    {
+      "name": "Inc42 - Quick Commerce",
+      "url": "https://inc42.com/tag/quick-commerce/feed/",
+      "source": "Inc42",
+      "active": true
+    },
+    {
+      "name": "Inc42 - Startups",
+      "url": "https://inc42.com/feed/",
+      "source": "Inc42",
+      "active": true
+    },
+    {
+      "name": "YourStory - Ecommerce",
+      "url": "https://yourstory.com/feed",
+      "source": "YourStory",
+      "active": true
+    },
+    {
+      "name": "Entrackr",
+      "url": "https://entrackr.com/feed/",
+      "source": "Entrackr",
+      "active": true
+    },
+    {
+      "name": "Business Standard - Companies",
+      "url": "https://www.business-standard.com/rss/companies-101.rss",
+      "source": "Business Standard",
+      "active": true
+    },
+    {
+      "name": "Financial Express - Industry",
+      "url": "https://www.financialexpress.com/industry/feed/",
+      "source": "Financial Express",
+      "active": true
+    }
+  ],
+  "settings": {
+    "max_articles": 150,
+    "max_age_days": 7,
+    "fetch_timeout_seconds": 15,
+    "min_relevance_keywords": 1
+  }
+}

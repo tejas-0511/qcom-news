@@ -1,0 +1,86 @@
+{
+  "generated_at": "2026-06-08T05:30:00+00:00",
+  "total": 8,
+  "articles": [
+    {
+      "id": "seed-001",
+      "title": "Blinkit crosses 1,000 dark store milestone — eyes 2,000 by end of FY27",
+      "url": "https://inc42.com/buzz/blinkit-dark-store/",
+      "source": "Inc42",
+      "published_at": "2026-06-08T04:00:00+00:00",
+      "summary": "Blinkit, the Zomato-owned quick commerce platform, crossed the 1,000 dark store mark this week, cementing its position as the category leader. The company plans to double the count to 2,000 by FY27-end, targeting Tier 2 expansions in Jaipur, Surat, and Lucknow.",
+      "topics": ["quick_commerce"],
+      "is_fallback": false
+    },
+    {
+      "id": "seed-002",
+      "title": "Swiggy Instamart's EBITDA burns widen as store count stagnates in Q4 FY26",
+      "url": "https://entrackr.com/swiggy-instamart-ebitda/",
+      "source": "Entrackr",
+      "published_at": "2026-06-07T08:00:00+00:00",
+      "summary": "Swiggy Instamart's per-order losses widened to ₹76 in Q4 FY26 even as rival Blinkit turned EBITDA-positive at the dark store level. The platform added fewer than 15 new dark stores in the quarter, fuelling investor concerns about its quick commerce competitiveness.",
+      "topics": ["quick_commerce", "funding"],
+      "is_fallback": false
+    },
+    {
+      "id": "seed-003",
+      "title": "Zepto raises $350M Series G at $7B valuation; targets 700 stores by December",
+      "url": "https://yourstory.com/zepto-series-g/",
+      "source": "YourStory",
+      "published_at": "2026-06-07T06:30:00+00:00",
+      "summary": "Zepto has closed a $350 million Series G round at a $7 billion post-money valuation, with participation from Nexus and existing investors. The funds will be deployed toward rapid dark store expansion and logistics infrastructure across 25 cities.",
+      "topics": ["quick_commerce", "funding"],
+      "is_fallback": false
+    },
+    {
+      "id": "seed-004",
+      "title": "HUL's QCom channel now 9% of total ecommerce GMV — quick commerce outpaces modern trade",
+      "url": "https://economictimes.indiatimes.com/hul-qcom/",
+      "source": "Economic Times",
+      "published_at": "2026-06-06T09:00:00+00:00",
+      "summary": "Hindustan Unilever's quick commerce contribution has risen sharply, with Blinkit and Zepto now accounting for 9% of its total ecommerce GMV. The company flagged that premium SKUs — particularly in Beauty & Wellbeing — are growing 3x faster on quick commerce vs modern trade.",
+      "topics": ["quick_commerce", "fmcg"],
+      "is_fallback": false
+    },
+    {
+      "id": "seed-005",
+      "title": "Meesho quietly crosses 200M registered users; doubles down on value grocery",
+      "url": "https://www.livemint.com/meesho-users/",
+      "source": "Mint",
+      "published_at": "2026-06-06T07:00:00+00:00",
+      "summary": "Meesho has hit 200 million registered users, driven by aggressive expansion into grocery and staples in Tier 3+ cities. The platform is piloting a 'Meesho Fresh' vertical targeting monthly grocery baskets in markets underserved by quick commerce players.",
+      "topics": ["ecommerce"],
+      "is_fallback": false
+    },
+    {
+      "id": "seed-006",
+      "title": "Retail media ad spend in India to cross ₹5,000 crore in FY27 — Flipkart and Blinkit lead",
+      "url": "https://www.financialexpress.com/retail-media-india/",
+      "source": "Financial Express",
+      "published_at": "2026-06-05T10:00:00+00:00",
+      "summary": "India's retail media market is projected to cross ₹5,000 crore in FY27, up 60% YoY. Flipkart Commerce Media and Blinkit Ads are the dominant platforms; brands are shifting 15-20% of digital budgets into in-platform placements as attribution improves.",
+      "topics": ["ecommerce", "retail_tech"],
+      "is_fallback": false
+    },
+    {
+      "id": "seed-007",
+      "title": "BigBasket slips to fourth in quick commerce rankings as BB Now expansion stalls",
+      "url": "https://inc42.com/bigbasket-qcom/",
+      "source": "Inc42",
+      "published_at": "2026-06-05T06:00:00+00:00",
+      "summary": "BigBasket's BB Now has dropped to fourth in the quick commerce rankings by GMV, behind Blinkit, Zepto, and Swiggy Instamart. Tata Digital is reportedly reassessing the dark store model as part of a broader FY27 profitability drive.",
+      "topics": ["quick_commerce"],
+      "is_fallback": false
+    },
+    {
+      "id": "seed-008",
+      "title": "D2C brands see 40% repeat rate uplift via Blinkit — quick commerce becomes retention channel",
+      "url": "https://yourstory.com/d2c-blinkit-retention/",
+      "source": "YourStory",
+      "published_at": "2026-06-04T08:30:00+00:00",
+      "summary": "Several D2C brands report that quick commerce is outperforming their own DTC websites on repeat rate metrics. Mamaearth, mCaffeine, and Plum cite Blinkit as their highest-retention channel — driven by convenience-led replenishment behaviour.",
+      "topics": ["quick_commerce", "fmcg", "ecommerce"],
+      "is_fallback": false
+    }
+  ]
+}

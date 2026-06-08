@@ -1,0 +1,116 @@
+{
+  "topics": [
+    {
+      "id": "quick_commerce",
+      "label": "Quick Commerce",
+      "color": "#FF6B35",
+      "keywords": [
+        "quick commerce",
+        "q-commerce",
+        "instant delivery",
+        "10-minute delivery",
+        "10 minute delivery",
+        "grocery delivery",
+        "dark store",
+        "hyperlocal delivery",
+        "blinkit",
+        "swiggy instamart",
+        "zepto",
+        "bigbasket",
+        "dunzo",
+        "minutes delivery",
+        "rapid delivery"
+      ]
+    },
+    {
+      "id": "ecommerce",
+      "label": "E-Commerce",
+      "color": "#4ECDC4",
+      "keywords": [
+        "ecommerce",
+        "e-commerce",
+        "online retail",
+        "marketplace",
+        "retail media",
+        "digital commerce",
+        "D2C",
+        "direct-to-consumer",
+        "direct to consumer",
+        "flipkart",
+        "amazon india",
+        "meesho",
+        "myntra",
+        "nykaa",
+        "online shopping",
+        "online sales"
+      ]
+    },
+    {
+      "id": "fmcg",
+      "label": "FMCG & Brands",
+      "color": "#A855F7",
+      "keywords": [
+        "FMCG",
+        "fast moving consumer goods",
+        "consumer goods",
+        "HUL",
+        "hindustan unilever",
+        "ITC",
+        "nestle india",
+        "dabur",
+        "marico",
+        "godrej consumer",
+        "P&G india",
+        "colgate",
+        "brand launch",
+        "consumer brand",
+        "packaged goods"
+      ]
+    },
+    {
+      "id": "retail_tech",
+      "label": "Retail Tech",
+      "color": "#22C55E",
+      "keywords": [
+        "retail technology",
+        "retail tech",
+        "commerce platform",
+        "omnichannel",
+        "phygital",
+        "supply chain tech",
+        "inventory management",
+        "last mile",
+        "last-mile delivery",
+        "fulfillment",
+        "warehouse",
+        "logistics tech"
+      ]
+    },
+    {
+      "id": "funding",
+      "label": "Funding & M&A",
+      "color": "#F59E0B",
+      "keywords": [
+        "funding",
+        "series A",
+        "series B",
+        "series C",
+        "IPO",
+        "acquisition",
+        "merger",
+        "valuation",
+        "unicorn",
+        "startup funding",
+        "venture capital",
+        "investment",
+        "raised",
+        "fundraise"
+      ]
+    }
+  ],
+  "placeholders": [
+    { "id": "adtech", "label": "AdTech", "coming_soon": true },
+    { "id": "d2c_brands", "label": "D2C Brands", "coming_soon": true },
+    { "id": "supply_chain", "label": "Supply Chain", "coming_soon": true }
+  ]
+}
