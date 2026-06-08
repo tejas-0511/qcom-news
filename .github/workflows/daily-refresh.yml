@@ -28,16 +28,10 @@ jobs:
       - name: Run news fetch script
         run: python scripts/fetch_news.py
 
-      - name: Check for changes
-        id: changes
-        run: |
-          git diff --quiet data/articles.json || echo "changed=true" >> $GITHUB_OUTPUT
-
       - name: Commit updated articles
-        if: steps.changes.outputs.changed == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/articles.json
-          git commit -m "chore: refresh news feed [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          git diff --cached --quiet && echo "No changes to commit" || git commit -m "chore: refresh news feed [$(date -u '+%Y-%m-%d %H:%M UTC')]"
           git push
