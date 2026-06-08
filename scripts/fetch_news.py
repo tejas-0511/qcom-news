@@ -131,8 +131,39 @@ def fetch_feed(url, source_name, timeout=15):
                 return el.get(attr, "")
             return (el.text or "").strip()
 
+        def get_link():
+            # Standard RSS: <link> is unusual — its text is stored as the .tail
+            # of the previous sibling, or as .text if the parser handles it.
+            # Try multiple strategies in order.
+            
+            # 1. Atom-style <link href="...">
+            atom_link = item.find("atom:link", ns)
+            if atom_link is not None:
+                href = atom_link.get("href", "").strip()
+                if href.startswith("http"):
+                    return href
+
+            # 2. <link> element with text (some parsers)
+            link_el = item.find("link")
+            if link_el is not None:
+                if link_el.text and link_el.text.strip().startswith("http"):
+                    return link_el.text.strip()
+                # 3. <link> tail text (standard RSS quirk in ElementTree)
+                if link_el.tail and link_el.tail.strip().startswith("http"):
+                    return link_el.tail.strip()
+
+            # 4. <guid> often contains the article URL in Indian RSS feeds
+            guid_el = item.find("guid")
+            if guid_el is not None:
+                guid = (guid_el.text or "").strip()
+                if guid.startswith("http") and "?" not in guid:
+                    return guid
+
+            return ""
+
         title = clean_html(get("title"))
-        link = get("link") or item.find("atom:link", ns).get("href", "") if item.find("atom:link", ns) is not None else ""
+        raw_link = get_link()
+        link = clean_url(raw_link)
         pub_date = get("pubDate") or get("published") or get("updated")
         summary_raw = get("description") or get("summary") or get("content")
         summary = clean_html(summary_raw)
@@ -142,7 +173,7 @@ def fetch_feed(url, source_name, timeout=15):
 
         articles.append({
             "title": title,
-            "url": link.strip(),
+            "url": link,
             "source": source_name,
             "published_at": parse_date(pub_date),
             "summary": summary,
@@ -152,7 +183,38 @@ def fetch_feed(url, source_name, timeout=15):
     return articles
 
 
-def fingerprint(article):
+def clean_url(url):
+    """Strip known tracking wrappers and validate the URL looks like an article."""
+    from urllib.parse import urlparse
+    if not url:
+        return ""
+    url = url.strip()
+
+    # Unwrap feedburner redirects — they resolve to homepage, not article
+    if "feedburner.com/~r/" in url or "feedproxy.google.com" in url:
+        return ""
+
+    # Strip common tracking query params but keep the base URL
+    if "?" in url:
+        base = url.split("?")[0]
+        parsed_base = urlparse(base)
+        segments = [s for s in parsed_base.path.split("/") if s]
+        if len(segments) >= 1:  # has at least one path segment
+            url = base
+
+    if not url.startswith("http"):
+        return ""
+
+    # Reject bare domains / homepages (no meaningful path)
+    parsed = urlparse(url)
+    segments = [s for s in parsed.path.split("/") if s]
+    if len(segments) < 1:
+        return ""
+
+    return url
+
+
+
     """Create dedup key from URL and normalised title."""
     url_key = article["url"].split("?")[0].rstrip("/")
     title_key = re.sub(r"\W+", "", article["title"].lower())[:60]
