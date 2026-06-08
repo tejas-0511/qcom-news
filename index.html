@@ -9,33 +9,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-/* ── TOKENS ────────────────────────────────────── */
-:root {
-  --bg:         #f5f3ef;
-  --surface:    #ffffff;
-  --surface-2:  #eeece8;
-  --border:     #d8d4ce;
-  --text:       #1a1815;
-  --muted:      #7a756d;
-  --inv:        #f5f3ef;
-  --accent:     #e8420a;
-  --accent-p:   #fde8e1;
-  --mono: "Space Mono", monospace;
-  --body: "DM Sans", system-ui, sans-serif;
-  --r: 6px;
-  --sh: 0 1px 3px rgba(0,0,0,.07), 0 4px 12px rgba(0,0,0,.05);
-  --t: .18s ease;
-}
-[data-theme="dark"] {
-  --bg:#0f0e0c; --surface:#1a1815; --surface-2:#242220;
-  --border:#302e2a; --text:#e8e4dc; --muted:#6b6560;
-  --inv:#0f0e0c; --accent:#ff5722; --accent-p:#2a1408;
-}
+:root{--bg:#f5f3ef;--surface:#fff;--surface-2:#eeece8;--border:#d8d4ce;--text:#1a1815;--muted:#7a756d;--inv:#f5f3ef;--accent:#e8420a;--accent-p:#fde8e1;--mono:"Space Mono",monospace;--body:"DM Sans",system-ui,sans-serif;--r:6px;--sh:0 1px 3px rgba(0,0,0,.07),0 4px 12px rgba(0,0,0,.05);--t:.18s ease}
+[data-theme="dark"]{--bg:#0f0e0c;--surface:#1a1815;--surface-2:#242220;--border:#302e2a;--text:#e8e4dc;--muted:#6b6560;--inv:#0f0e0c;--accent:#ff5722;--accent-p:#2a1408}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;min-height:100vh;transition:background var(--t),color var(--t)}
-
-/* ── HEADER ──────────────────────────────────── */
 .hdr{background:var(--text);color:var(--inv);position:sticky;top:0;z-index:100;border-bottom:2px solid var(--accent)}
 .hdr-in{max-width:1100px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:12px}
@@ -43,45 +21,37 @@ body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:15
 .brand-name{font-family:var(--mono);font-size:17px;font-weight:700;letter-spacing:.08em}
 .brand-sub{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:1px}
 .hdr-meta{display:flex;align-items:center;gap:12px}
-.status-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;animation:pulse 2s ease infinite;flex-shrink:0}
-.status-txt{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.45)}
+.s-dot{width:7px;height:7px;border-radius:50%;background:#f59e0b;flex-shrink:0;transition:background .4s}
+.s-txt{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.45)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .theme-btn{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all var(--t)}
 .theme-btn:hover{border-color:rgba(255,255,255,.5);color:#fff}
-
-/* ── MAIN ────────────────────────────────────── */
 .main{max-width:1100px;margin:0 auto;padding:24px 20px 60px}
-
-/* ── CONTROLS ────────────────────────────────── */
 .controls{display:flex;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap}
-.search-wrap{position:relative;flex:1;min-width:200px;max-width:400px}
-.search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);font-size:17px;color:var(--muted);pointer-events:none}
+.sw{position:relative;flex:1;min-width:200px;max-width:400px}
+.si{position:absolute;left:11px;top:50%;transform:translateY(-50%);font-size:17px;color:var(--muted);pointer-events:none}
 .search-in{width:100%;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);padding:8px 34px 8px 36px;font-family:var(--body);font-size:14px;color:var(--text);outline:none;transition:border-color var(--t)}
 .search-in:focus{border-color:var(--accent)}
 .search-in::placeholder{color:var(--muted)}
-.search-x{position:absolute;right:9px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);font-size:12px;display:none;padding:4px}
-.search-x.on{display:block}
-.refresh-btn{font-family:var(--mono);font-size:11px;padding:8px 14px;border:1.5px solid var(--border);background:var(--surface);color:var(--muted);border-radius:var(--r);cursor:pointer;letter-spacing:.04em;transition:all var(--t);white-space:nowrap}
-.refresh-btn:hover{background:var(--text);color:var(--inv);border-color:var(--text)}
-
-/* ── TABS ────────────────────────────────────── */
+.sx{position:absolute;right:9px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);font-size:12px;display:none;padding:4px}
+.sx.on{display:block}
+.rbtn{font-family:var(--mono);font-size:11px;padding:8px 14px;border:1.5px solid var(--border);background:var(--surface);color:var(--muted);border-radius:var(--r);cursor:pointer;letter-spacing:.04em;transition:all var(--t);white-space:nowrap}
+.rbtn:hover,.rbtn:disabled{background:var(--text);color:var(--inv);border-color:var(--text)}
+.rbtn:disabled{opacity:.6;cursor:not-allowed}
 .tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:26px;padding-bottom:16px;border-bottom:1px solid var(--border)}
 .tab{font-family:var(--mono);font-size:11px;letter-spacing:.05em;padding:6px 13px;border-radius:20px;border:1.5px solid var(--border);background:var(--surface);color:var(--muted);cursor:pointer;transition:all var(--t);display:flex;align-items:center;gap:5px}
 .tab:hover{border-color:var(--text);color:var(--text)}
 .tab.active{background:var(--text);color:var(--inv);border-color:var(--text)}
 .tab-n{background:rgba(255,255,255,.15);border-radius:10px;padding:1px 6px;font-size:10px}
 .tab:not(.active) .tab-n{background:var(--surface-2);color:var(--muted)}
-
-/* ── LOADING ─────────────────────────────────── */
 .loading{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:60px 20px;color:var(--muted);font-family:var(--mono);font-size:12px;text-align:center}
 .spinner{width:28px;height:28px;border:2.5px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.load-sources{font-size:10px;color:var(--muted);opacity:.7;margin-top:4px}
-
-/* ── ERROR ───────────────────────────────────── */
-.error-box{background:var(--accent-p);border:1.5px solid var(--accent);border-radius:var(--r);padding:16px 20px;color:var(--accent);font-family:var(--mono);font-size:12px;margin-bottom:20px;line-height:1.6}
-
-/* ── FEATURED ────────────────────────────────── */
+.load-src{font-size:10px;color:var(--muted);opacity:.7;margin-top:4px;max-width:300px}
+.prog-wrap{width:200px;height:3px;background:var(--border);border-radius:2px;margin-top:6px}
+.prog-bar{height:100%;background:var(--accent);border-radius:2px;transition:width .4s ease;width:0%}
+.err-box{background:var(--accent-p);border:1.5px solid var(--accent);border-radius:var(--r);padding:16px 20px;font-size:13px;line-height:1.7;margin-bottom:20px}
+.err-box strong{font-family:var(--mono);color:var(--accent);display:block;margin-bottom:6px}
 .feat{background:var(--text);color:var(--inv);border-radius:var(--r);padding:28px 32px;margin-bottom:32px;cursor:pointer;transition:transform var(--t),box-shadow var(--t);position:relative;overflow:hidden}
 .feat::before{content:"";position:absolute;top:0;right:0;width:180px;height:180px;background:radial-gradient(circle,rgba(232,66,10,.25) 0%,transparent 70%);pointer-events:none}
 .feat:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.15)}
@@ -93,76 +63,51 @@ body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:15
 .feat-src{color:var(--accent);font-weight:700}
 .feat-link{margin-left:auto;background:var(--accent);color:#fff;padding:8px 18px;border-radius:var(--r);font-family:var(--mono);font-size:11px;text-decoration:none;letter-spacing:.05em;font-weight:700;transition:background var(--t);display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
 .feat-link:hover{background:#c43608}
-
-/* ── SECTION ─────────────────────────────────── */
 .sec{margin-bottom:36px}
 .sec-hdr{display:flex;align-items:center;gap:14px;margin-bottom:16px}
 .sec-title{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
 .sec-line{flex:1;height:1px;background:var(--border)}
-
-/* ── HEADLINE GRID ───────────────────────────── */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px}
 .card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);padding:16px 18px;cursor:pointer;transition:border-color var(--t),box-shadow var(--t),transform var(--t);border-left-width:3px}
 .card:hover{box-shadow:var(--sh);transform:translateY(-1px)}
 .card-title{font-weight:600;font-size:14px;line-height:1.45;margin-bottom:9px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .card-meta{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;color:var(--muted);flex-wrap:wrap}
 .src{color:var(--accent);font-weight:700}
-
-/* ── ARTICLE ROWS ────────────────────────────── */
 .rows{display:flex;flex-direction:column;gap:9px}
-.row{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);padding:14px 18px;display:flex;gap:14px;cursor:pointer;transition:box-shadow var(--t);align-items:flex-start}
-.row:hover{box-shadow:var(--sh)}
+.row{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);padding:14px 18px;display:flex;gap:14px;align-items:flex-start}
 .row-num{font-family:var(--mono);font-size:12px;color:var(--muted);min-width:22px;padding-top:2px;flex-shrink:0}
-.row-body{flex:1;min-width:0}
+.row-body{flex:1;min-width:0;cursor:pointer}
 .row-title{font-weight:500;font-size:14px;line-height:1.45;margin-bottom:5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .row-sum{font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:7px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .row-meta{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;color:var(--muted);flex-wrap:wrap}
 .row-link{background:none;border:1px solid var(--border);color:var(--muted);border-radius:var(--r);padding:5px 10px;font-family:var(--mono);font-size:10px;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-block;transition:all var(--t);flex-shrink:0;align-self:center}
 .row-link:hover{background:var(--accent);border-color:var(--accent);color:#fff}
-
-/* ── CHIPS ───────────────────────────────────── */
 .chips{display:flex;gap:4px;flex-wrap:wrap;margin-top:7px}
 .chip{font-family:var(--mono);font-size:9px;letter-spacing:.05em;padding:2px 7px;border-radius:10px;font-weight:700;text-transform:uppercase}
-
-/* ── FRESHNESS ───────────────────────────────── */
-.fresh-new{background:#dcfce7;color:#15803d}
-.fresh-today{background:#fef9c3;color:#854d0e}
-[data-theme="dark"] .fresh-new{background:#052e16;color:#4ade80}
-[data-theme="dark"] .fresh-today{background:#1c1400;color:#fbbf24}
 .badge{font-family:var(--mono);font-size:9px;padding:2px 6px;border-radius:8px;font-weight:700;letter-spacing:.04em}
-
-/* ── EMPTY ───────────────────────────────────── */
+.fn{background:#dcfce7;color:#15803d}
+.ft{background:#fef9c3;color:#854d0e}
+[data-theme="dark"] .fn{background:#052e16;color:#4ade80}
+[data-theme="dark"] .ft{background:#1c1400;color:#fbbf24}
 .empty{text-align:center;padding:50px 20px;color:var(--muted)}
 .empty-icon{font-size:42px;margin-bottom:14px}
 .empty-title{font-family:var(--mono);font-size:15px;margin-bottom:6px;color:var(--text)}
-
-/* ── MODAL ───────────────────────────────────── */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)}
 .overlay[hidden]{display:none}
-.modal{background:var(--surface);border-radius:var(--r);padding:28px;max-width:580px;width:100%;max-height:80vh;overflow-y:auto;position:relative;box-shadow:0 8px 32px rgba(0,0,0,.15);animation:min .2s ease}
-@keyframes min{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:none}}
-.modal-x{position:absolute;top:14px;right:14px;background:var(--surface-2);border:none;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:12px;color:var(--muted);display:flex;align-items:center;justify-content:center;transition:background var(--t)}
-.modal-x:hover{background:var(--border)}
-.modal-title{font-family:var(--mono);font-size:17px;font-weight:700;line-height:1.4;margin-bottom:12px}
-.modal-meta{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:16px;display:flex;gap:10px;flex-wrap:wrap}
-.modal-sum{font-size:14px;line-height:1.7;color:var(--muted);margin-bottom:20px}
-.modal-cta{display:inline-flex;align-items:center;gap:7px;background:var(--accent);color:#fff;padding:10px 22px;border-radius:var(--r);font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-decoration:none;font-weight:700;transition:background var(--t)}
-.modal-cta:hover{background:#c43608}
-
-/* ── FOOTER ──────────────────────────────────── */
+.modal{background:var(--surface);border-radius:var(--r);padding:28px;max-width:580px;width:100%;max-height:80vh;overflow-y:auto;position:relative;box-shadow:0 8px 32px rgba(0,0,0,.15);animation:mi .2s ease}
+@keyframes mi{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:none}}
+.mx{position:absolute;top:14px;right:14px;background:var(--surface-2);border:none;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:12px;color:var(--muted);display:flex;align-items:center;justify-content:center;transition:background var(--t)}
+.mx:hover{background:var(--border)}
+.m-title{font-family:var(--mono);font-size:17px;font-weight:700;line-height:1.4;margin-bottom:12px}
+.m-meta{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:16px;display:flex;gap:10px;flex-wrap:wrap}
+.m-sum{font-size:14px;line-height:1.7;color:var(--muted);margin-bottom:20px}
+.m-cta{display:inline-flex;align-items:center;gap:7px;background:var(--accent);color:#fff;padding:10px 22px;border-radius:var(--r);font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-decoration:none;font-weight:700;transition:background var(--t)}
+.m-cta:hover{background:#c43608}
 .footer{background:var(--surface-2);border-top:1px solid var(--border);padding:14px 20px;text-align:center;font-family:var(--mono);font-size:11px;color:var(--muted)}
-
-/* ── RESPONSIVE ──────────────────────────────── */
 @media(max-width:640px){
-  .hdr-in{gap:8px}
-  .brand-name{font-size:14px}
-  .feat{padding:20px 18px}
-  .feat-title{font-size:15px}
-  .controls{flex-direction:column;align-items:stretch}
-  .search-wrap{max-width:100%}
-  .grid{grid-template-columns:1fr}
-  .row{flex-direction:column;gap:7px}
-  .row-num{display:none}
+  .brand-name{font-size:14px}.feat{padding:20px 18px}.feat-title{font-size:15px}
+  .controls{flex-direction:column;align-items:stretch}.sw{max-width:100%}
+  .grid{grid-template-columns:1fr}.row{flex-direction:column;gap:7px}.row-num{display:none}
   .modal{padding:20px 16px}
 }
 .fade{animation:fade .25s ease both}
@@ -181,8 +126,8 @@ body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:15
       </div>
     </div>
     <div class="hdr-meta">
-      <div class="status-dot" id="statusDot"></div>
-      <span class="status-txt" id="statusTxt">Loading…</span>
+      <div class="s-dot" id="sDot"></div>
+      <span class="s-txt" id="sTxt">Loading…</span>
       <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">◐</button>
     </div>
   </div>
@@ -190,60 +135,58 @@ body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:15
 
 <main class="main">
   <div class="controls">
-    <div class="search-wrap">
-      <span class="search-icon">⌕</span>
+    <div class="sw">
+      <span class="si">⌕</span>
       <input type="search" id="searchIn" class="search-in" placeholder="Search headlines…" autocomplete="off" />
-      <button class="search-x" id="searchX" aria-label="Clear">✕</button>
+      <button class="sx" id="sx" aria-label="Clear">✕</button>
     </div>
-    <button class="refresh-btn" id="refreshBtn">↻ Refresh</button>
+    <button class="rbtn" id="rbtn">↻ Refresh</button>
   </div>
 
   <nav class="tabs" id="tabs" role="tablist">
-    <button class="tab active" data-topic="all" role="tab">All <span class="tab-n" id="n-all">—</span></button>
-    <button class="tab" data-topic="quick_commerce" role="tab">Quick Commerce <span class="tab-n" id="n-quick_commerce">—</span></button>
-    <button class="tab" data-topic="ecommerce" role="tab">E-Commerce <span class="tab-n" id="n-ecommerce">—</span></button>
-    <button class="tab" data-topic="fmcg" role="tab">FMCG <span class="tab-n" id="n-fmcg">—</span></button>
-    <button class="tab" data-topic="funding" role="tab">Funding <span class="tab-n" id="n-funding">—</span></button>
-    <button class="tab" data-topic="retail_tech" role="tab">Retail Tech <span class="tab-n" id="n-retail_tech">—</span></button>
+    <button class="tab active" data-topic="all">All <span class="tab-n" id="n-all">—</span></button>
+    <button class="tab" data-topic="quick_commerce">Quick Commerce <span class="tab-n" id="n-quick_commerce">—</span></button>
+    <button class="tab" data-topic="ecommerce">E-Commerce <span class="tab-n" id="n-ecommerce">—</span></button>
+    <button class="tab" data-topic="fmcg">FMCG <span class="tab-n" id="n-fmcg">—</span></button>
+    <button class="tab" data-topic="funding">Funding <span class="tab-n" id="n-funding">—</span></button>
+    <button class="tab" data-topic="retail_tech">Retail Tech <span class="tab-n" id="n-retail_tech">—</span></button>
   </nav>
 
-  <div id="loadingEl" class="loading">
+  <div id="loadEl" class="loading">
     <div class="spinner"></div>
     <div>Fetching live news…</div>
-    <div class="load-sources" id="loadSrc">Connecting to sources</div>
+    <div class="load-src" id="loadSrc">Connecting to Google News</div>
+    <div class="prog-wrap"><div class="prog-bar" id="progBar"></div></div>
   </div>
 
-  <div id="errorEl" class="error-box" style="display:none"></div>
+  <div id="errEl" style="display:none" class="err-box"></div>
 
   <div id="contentEl" style="display:none">
     <div class="feat fade" id="featEl"></div>
-
-    <div class="sec" id="headlinesSec">
+    <div class="sec" id="hdSec">
       <div class="sec-hdr"><h2 class="sec-title">Top Headlines</h2><span class="sec-line"></span></div>
-      <div class="grid" id="headlinesEl"></div>
+      <div class="grid" id="hdEl"></div>
     </div>
-
-    <div class="sec" id="latestSec">
+    <div class="sec" id="ltSec">
       <div class="sec-hdr"><h2 class="sec-title">Latest Articles</h2><span class="sec-line"></span></div>
-      <div class="rows" id="latestEl"></div>
+      <div class="rows" id="ltEl"></div>
     </div>
-
     <div class="empty" id="emptyEl" style="display:none">
       <div class="empty-icon">📭</div>
       <div class="empty-title">No articles found</div>
-      <div style="font-size:13px;color:var(--muted)">Try a different topic or search term</div>
+      <div style="font-size:13px">Try a different topic or clear the search</div>
     </div>
   </div>
 </main>
 
 <footer class="footer">
-  Live feed via Google News · Quick Commerce · Ecommerce · FMCG · India
+  Live via Google News · Quick Commerce · Ecommerce · FMCG · India · Refreshes on load
 </footer>
 
 <div class="overlay" id="overlay" hidden role="dialog" aria-modal="true">
   <div class="modal" id="modalEl">
-    <button class="modal-x" id="modalX" aria-label="Close">✕</button>
-    <div id="modalContent"></div>
+    <button class="mx" id="mx" aria-label="Close">✕</button>
+    <div id="mContent"></div>
   </div>
 </div>
 
@@ -251,349 +194,357 @@ body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:15
 (function(){
 "use strict";
 
-/* ── CONFIG ─────────────────────────────────── */
-// Each query hits Google News RSS for India, converted to JSON via rss2json
-const QUERIES = [
-  { topic: "quick_commerce", label: "Quick Commerce",
-    q: "quick commerce india blinkit zepto swiggy instamart dark store" },
-  { topic: "ecommerce",      label: "E-Commerce",
-    q: "ecommerce india flipkart meesho amazon online retail D2C" },
-  { topic: "fmcg",           label: "FMCG",
-    q: "FMCG india HUL hindustan unilever ITC dabur marico consumer goods" },
-  { topic: "funding",        label: "Funding",
-    q: "india startup funding ecommerce retail investment unicorn IPO" },
-  { topic: "retail_tech",    label: "Retail Tech",
-    q: "india retail technology omnichannel supply chain last mile logistics" },
+/* ─── TOPIC CONFIG ───────────────────────────────── */
+const TOPICS = [
+  { id:"quick_commerce", label:"Quick Commerce",
+    // Use + for spaces - avoids double-encoding when this goes into rss2json URL
+    q:"quick+commerce+india+blinkit+zepto+swiggy+instamart+dark+store",
+    border:"#FF6B35", bg:"#fff1eb", color:"#c44b0a" },
+  { id:"ecommerce", label:"E-Commerce",
+    q:"ecommerce+india+flipkart+meesho+amazon+online+retail+D2C",
+    border:"#0ea5e9", bg:"#e0f5fd", color:"#0369a1" },
+  { id:"fmcg", label:"FMCG",
+    q:"FMCG+india+HUL+hindustan+unilever+ITC+dabur+consumer+goods",
+    border:"#a855f7", bg:"#f5edff", color:"#7e22ce" },
+  { id:"funding", label:"Funding",
+    q:"india+startup+funding+ecommerce+retail+investment+unicorn",
+    border:"#f59e0b", bg:"#fef9c3", color:"#854d0e" },
+  { id:"retail_tech", label:"Retail Tech",
+    q:"india+retail+technology+omnichannel+supply+chain+last+mile+logistics",
+    border:"#22c55e", bg:"#dcfce7", color:"#15803d" },
 ];
 
-const TOPIC_COLORS = {
-  quick_commerce: { border:"#FF6B35", bg:"#fff1eb", color:"#c44b0a" },
-  ecommerce:      { border:"#0ea5e9", bg:"#e0f5fd", color:"#0369a1" },
-  fmcg:           { border:"#a855f7", bg:"#f5edff", color:"#7e22ce" },
-  funding:        { border:"#f59e0b", bg:"#fef9c3", color:"#854d0e" },
-  retail_tech:    { border:"#22c55e", bg:"#dcfce7", color:"#15803d" },
-};
+/* ─── STATE ──────────────────────────────────────── */
+let all   = [];
+let topic = "all";
+let sq    = "";
 
-const RSS2JSON = "https://api.rss2json.com/v1/api.json?rss_url=";
-const GNEWS    = "https://news.google.com/rss/search?hl=en-IN&gl=IN&ceid=IN:en&q=";
-
-/* ── STATE ──────────────────────────────────── */
-let allArticles = [];
-let activeTopic = "all";
-let searchQ     = "";
-
-/* ── DARK MODE ──────────────────────────────── */
-const saved = localStorage.getItem("qcom_theme");
-const dark  = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-document.documentElement.setAttribute("data-theme", dark);
+/* ─── DARK MODE ──────────────────────────────────── */
+const th = localStorage.getItem("qc_theme") ||
+  (window.matchMedia("(prefers-color-scheme:dark)").matches ? "dark" : "light");
+document.documentElement.setAttribute("data-theme", th);
 document.getElementById("themeBtn").onclick = () => {
-  const cur = document.documentElement.getAttribute("data-theme");
-  const nxt = cur === "dark" ? "light" : "dark";
-  document.documentElement.setAttribute("data-theme", nxt);
-  localStorage.setItem("qcom_theme", nxt);
+  const n = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", n);
+  localStorage.setItem("qc_theme", n);
 };
 
-/* ── FETCH ──────────────────────────────────── */
-async function fetchQuery(query) {
-  const gnewsUrl  = GNEWS + encodeURIComponent(query.q);
-  const apiUrl    = RSS2JSON + encodeURIComponent(gnewsUrl) + "&count=20";
-  const res = await fetch(apiUrl);
-  if (!res.ok) throw new Error("HTTP " + res.status);
+/* ─── FETCH ONE TOPIC ─────────────────────────────
+   Google News RSS → rss2json.com → JSON (CORS-safe)
+   
+   KEY FIX: query uses + for spaces, NOT encodeURIComponent.
+   The Google News URL is then encoded ONCE for the rss2json rss_url param.
+   Previous bug: encodeURIComponent(query) -> %20 -> then encoded again -> %2520
+   which made rss2json receive a malformed URL and return an error.
+──────────────────────────────────────────────────── */
+async function fetchTopic(t) {
+  // Build Google News RSS URL with + for spaces (safe to encode once below)
+  const gnews = `https://news.google.com/rss/search?q=${t.q}&hl=en-IN&gl=IN&ceid=IN:en`;
+  
+  // Encode gnews URL once for the rss2json rss_url query param
+  const api = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(gnews)}&count=20`;
+
+  const res = await fetch(api, { headers:{ "Accept":"application/json" } });
+  if (!res.ok) throw new Error(`HTTP ${res.status} from rss2json`);
+
   const data = await res.json();
-  if (data.status !== "ok") throw new Error("Feed error: " + data.message);
+  if (data.status !== "ok") throw new Error(`rss2json: ${data.message || "feed error"}`);
+
   return (data.items || []).map(item => ({
-    id:           btoa(item.link || item.title).slice(0, 20),
-    title:        item.title || "",
-    url:          item.link  || "",
-    source:       cleanSource(item.author || "Google News"),
+    id:    simpleHash(item.link || item.title || ""),
+    title: (item.title || "").trim(),
+    // item.link from rss2json is the direct article URL - no further processing needed
+    url:   (item.link  || "").trim(),
+    source: cleanSource(item.author || ""),
     published_at: item.pubDate || "",
-    summary:      stripHtml(item.description || item.content || ""),
-    topic:        query.topic,
-  }));
+    summary: stripHtml(item.description || item.content || ""),
+    topic: t.id,
+  })).filter(a => a.title && a.url && a.url.startsWith("http"));
+}
+
+function simpleHash(s) {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (Math.imul(31, h) + s.charCodeAt(i)) | 0;
+  return Math.abs(h).toString(36);
 }
 
 function cleanSource(raw) {
-  // Google News author field often looks like "Economic Times" or "Inc42 Media"
-  return raw.replace(/ - .*$/, "").replace(/\s*Media\s*$/i, "").trim() || "Google News";
+  // rss2json author for Google News looks like "Times of India" or "Inc42 Media"
+  return raw.replace(/\s*media\s*$/i,"").replace(/ - .*$/,"").trim() || "Google News";
 }
 
 function stripHtml(s) {
-  const tmp = document.createElement("div");
-  tmp.innerHTML = s;
-  const t = (tmp.textContent || tmp.innerText || "").replace(/\s+/g, " ").trim();
-  return t.length > 320 ? t.slice(0, 320) + "…" : t;
+  const d = document.createElement("div");
+  d.innerHTML = s;
+  const t = (d.textContent || d.innerText || "").replace(/\s+/g," ").trim();
+  return t.length > 300 ? t.slice(0,300) + "…" : t;
 }
 
-/* ── INIT ───────────────────────────────────── */
+/* ─── LOAD ───────────────────────────────────────── */
 async function load() {
+  setUI("loading");
   setStatus("loading");
-  document.getElementById("loadingEl").style.display = "flex";
-  document.getElementById("contentEl").style.display  = "none";
-  document.getElementById("errorEl").style.display    = "none";
+  document.getElementById("rbtn").disabled = true;
 
-  const results = [];
   const seen    = new Set();
+  const results = [];
+  const errors  = [];
 
-  for (let i = 0; i < QUERIES.length; i++) {
-    const q = QUERIES[i];
+  for (let i = 0; i < TOPICS.length; i++) {
+    const t = TOPICS[i];
+    setProgress((i / TOPICS.length) * 90);
     document.getElementById("loadSrc").textContent =
-      `Fetching ${q.label} (${i+1}/${QUERIES.length})…`;
+      `Fetching ${t.label} (${i+1}/${TOPICS.length})…`;
     try {
-      const items = await fetchQuery(q);
-      for (const art of items) {
+      const items = await fetchTopic(t);
+      for (const a of items) {
         // Deduplicate by normalised title
-        const key = art.title.toLowerCase().replace(/\W/g, "").slice(0, 50);
-        if (seen.has(key)) continue;
+        const key = a.title.toLowerCase().replace(/\W+/g,"").slice(0,60);
+        if (seen.has(key) || !key) continue;
         seen.add(key);
-        results.push(art);
+        results.push(a);
       }
     } catch(e) {
-      console.warn("Query failed:", q.label, e.message);
+      console.warn(`[${t.label}] fetch failed:`, e.message);
+      errors.push(`${t.label}: ${e.message}`);
     }
   }
 
+  setProgress(100);
+  document.getElementById("rbtn").disabled = false;
+
   // Sort newest first
-  results.sort((a, b) => {
+  results.sort((a,b) => {
     const da = a.published_at ? new Date(a.published_at) : 0;
     const db = b.published_at ? new Date(b.published_at) : 0;
     return db - da;
   });
 
-  allArticles = results;
+  all = results;
 
-  if (allArticles.length === 0) {
-    showError("Could not load news. Check your internet connection and try refreshing.");
+  if (all.length === 0) {
+    const detail = errors.length
+      ? `<br><br>Details: ${errors.join(" | ")}`
+      : "";
+    showError(
+      "Could not load news feeds." + detail +
+      "<br><br>This usually means rss2json.com is temporarily unavailable. " +
+      "Wait a minute and click Refresh, or try opening the page in a different browser."
+    );
     return;
   }
 
-  setStatus("live", allArticles.length + " stories");
-  document.getElementById("loadingEl").style.display = "none";
-  document.getElementById("contentEl").style.display = "block";
+  // Partial success - show warning if some failed
+  if (errors.length) {
+    console.warn("Some feeds failed:", errors);
+  }
+
+  setStatus("live", `${all.length} stories`);
+  setUI("content");
   updateCounts();
   render();
 }
 
-/* ── RENDER ─────────────────────────────────── */
-function getFiltered() {
-  return allArticles.filter(a => {
-    if (activeTopic !== "all" && a.topic !== activeTopic) return false;
-    if (searchQ) {
-      const hay = (a.title + " " + a.source + " " + a.summary).toLowerCase();
-      if (!hay.includes(searchQ)) return false;
+/* ─── RENDER ─────────────────────────────────────── */
+function filtered() {
+  return all.filter(a => {
+    if (topic !== "all" && a.topic !== topic) return false;
+    if (sq) {
+      const h = (a.title+" "+a.source+" "+a.summary).toLowerCase();
+      if (!h.includes(sq)) return false;
     }
     return true;
   });
 }
 
 function render() {
-  const articles = getFiltered();
-  const isEmpty  = articles.length === 0;
-
-  document.getElementById("emptyEl").style.display    = isEmpty ? "block" : "none";
-  document.getElementById("featEl").style.display     = isEmpty ? "none"  : "block";
-  document.getElementById("headlinesSec").style.display = isEmpty ? "none" : "block";
-  document.getElementById("latestSec").style.display  = isEmpty ? "none"  : "block";
-
-  if (isEmpty) return;
-
-  renderFeatured(articles[0]);
-  renderHeadlines(articles.slice(1, 7));
-  renderLatest(articles.slice(7));
+  const arts = filtered();
+  const none = arts.length === 0;
+  $("emptyEl").style.display   = none ? "block" : "none";
+  $("featEl").style.display    = none ? "none"  : "block";
+  $("hdSec").style.display     = none ? "none"  : "block";
+  $("ltSec").style.display     = none ? "none"  : "block";
+  if (none) return;
+  renderFeat(arts[0]);
+  renderGrid(arts.slice(1,7));
+  renderRows(arts.slice(7));
 }
 
-function renderFeatured(a) {
-  const el = document.getElementById("featEl");
+function renderFeat(a) {
+  const el = $("featEl");
   el.innerHTML = `
     <div class="feat-badge">Featured Story</div>
     <div class="feat-title">${esc(a.title)}</div>
     ${a.summary ? `<div class="feat-sum">${esc(a.summary)}</div>` : ""}
     <div class="feat-foot">
       <span class="feat-src">${esc(a.source)}</span>
-      <span>${fmtDate(a.published_at)}</span>
-      ${chipHtml(a.topic)}
+      <span>${fmt(a.published_at)}</span>
+      ${chip(a.topic)}
       <a class="feat-link" href="${a.url}" target="_blank" rel="noopener noreferrer">Read Article →</a>
-    </div>
-  `;
+    </div>`;
   el.onclick = e => { if (!e.target.closest(".feat-link")) openModal(a); };
 }
 
-function renderHeadlines(articles) {
-  const el = document.getElementById("headlinesEl");
+function renderGrid(arts) {
+  const el = $("hdEl");
   el.innerHTML = "";
-  articles.forEach(a => {
-    const c = TOPIC_COLORS[a.topic] || {};
-    const card = document.createElement("div");
-    card.className = "card fade";
-    card.style.borderLeftColor = c.border || "var(--border)";
-    card.innerHTML = `
+  arts.forEach(a => {
+    const t = TOPICS.find(t=>t.id===a.topic)||{};
+    const c = document.createElement("div");
+    c.className = "card fade";
+    c.style.borderLeftColor = t.border || "var(--border)";
+    c.innerHTML = `
       <div class="card-title">${esc(a.title)}</div>
       <div class="card-meta">
         <span class="src">${esc(a.source)}</span>
-        <span>${fmtDate(a.published_at)}</span>
-        ${freshBadge(a.published_at)}
+        <span>${fmt(a.published_at)}</span>
+        ${badge(a.published_at)}
       </div>
-      ${chipHtml(a.topic)}
-    `;
-    card.onclick = () => openModal(a);
-    card.setAttribute("tabindex","0");
-    card.onkeydown = e => { if(e.key==="Enter") openModal(a); };
-    el.appendChild(card);
+      ${chip(a.topic)}`;
+    c.onclick = () => openModal(a);
+    c.setAttribute("tabindex","0");
+    c.onkeydown = e => { if(e.key==="Enter") openModal(a); };
+    el.appendChild(c);
   });
 }
 
-function renderLatest(articles) {
-  const el = document.getElementById("latestEl");
+function renderRows(arts) {
+  const el = $("ltEl");
   el.innerHTML = "";
-  articles.forEach((a, i) => {
-    const row = document.createElement("div");
-    row.className = "row fade";
-    row.innerHTML = `
+  arts.forEach((a,i) => {
+    const r = document.createElement("div");
+    r.className = "row fade";
+    r.innerHTML = `
       <div class="row-num">${String(i+8).padStart(2,"0")}</div>
       <div class="row-body">
         <div class="row-title">${esc(a.title)}</div>
         ${a.summary ? `<div class="row-sum">${esc(a.summary)}</div>` : ""}
         <div class="row-meta">
           <span class="src">${esc(a.source)}</span>
-          <span>${fmtDate(a.published_at)}</span>
-          ${freshBadge(a.published_at)}
-          ${chipHtml(a.topic)}
+          <span>${fmt(a.published_at)}</span>
+          ${badge(a.published_at)}
+          ${chip(a.topic)}
         </div>
       </div>
-      <a class="row-link" href="${a.url}" target="_blank" rel="noopener noreferrer">Read ↗</a>
-    `;
-    // clicking the row body opens modal; the Read link goes directly
-    row.querySelector(".row-body").onclick = () => openModal(a);
-    row.querySelector(".row-num").onclick  = () => openModal(a);
-    el.appendChild(row);
+      <a class="row-link" href="${a.url}" target="_blank" rel="noopener noreferrer">Read ↗</a>`;
+    r.querySelector(".row-body").onclick = () => openModal(a);
+    r.querySelector(".row-num").onclick  = () => openModal(a);
+    el.appendChild(r);
   });
 }
 
-/* ── MODAL ──────────────────────────────────── */
+/* ─── MODAL ──────────────────────────────────────── */
 function openModal(a) {
-  document.getElementById("modalContent").innerHTML = `
-    ${chipHtml(a.topic)}
-    <div class="modal-title" style="margin-top:10px">${esc(a.title)}</div>
-    <div class="modal-meta">
+  $("mContent").innerHTML = `
+    ${chip(a.topic)}
+    <div class="m-title" style="margin-top:10px">${esc(a.title)}</div>
+    <div class="m-meta">
       <span class="src">${esc(a.source)}</span>
-      <span>${fmtDate(a.published_at, true)}</span>
-      ${freshBadge(a.published_at)}
+      <span>${fmt(a.published_at, true)}</span>
+      ${badge(a.published_at)}
     </div>
-    ${a.summary ? `<div class="modal-sum">${esc(a.summary)}</div>` : ""}
-    <a class="modal-cta" href="${a.url}" target="_blank" rel="noopener noreferrer">Read Full Article ↗</a>
-  `;
-  document.getElementById("overlay").hidden = false;
+    ${a.summary ? `<div class="m-sum">${esc(a.summary)}</div>` : ""}
+    <a class="m-cta" href="${a.url}" target="_blank" rel="noopener noreferrer">Read Full Article ↗</a>`;
+  $("overlay").hidden = false;
   document.body.style.overflow = "hidden";
 }
-
-function closeModal() {
-  document.getElementById("overlay").hidden = true;
-  document.body.style.overflow = "";
-}
-
-document.getElementById("modalX").onclick = closeModal;
-document.getElementById("overlay").onclick = e => { if(e.target===e.currentTarget) closeModal(); };
+function closeModal(){$("overlay").hidden=true;document.body.style.overflow="";}
+$("mx").onclick     = closeModal;
+$("overlay").onclick = e => { if(e.target===e.currentTarget) closeModal(); };
 document.addEventListener("keydown", e => { if(e.key==="Escape") closeModal(); });
 
-/* ── TABS ───────────────────────────────────── */
-document.getElementById("tabs").addEventListener("click", e => {
-  const btn = e.target.closest(".tab");
-  if (!btn) return;
-  document.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
-  btn.classList.add("active");
-  activeTopic = btn.dataset.topic;
+/* ─── TABS ───────────────────────────────────────── */
+$("tabs").addEventListener("click", e => {
+  const b = e.target.closest(".tab");
+  if (!b) return;
+  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");
+  topic = b.dataset.topic;
   render();
 });
 
 function updateCounts() {
-  const set = id => {
-    const el = document.getElementById("n-" + id);
-    if (el) el.textContent = id === "all"
-      ? allArticles.length
-      : allArticles.filter(a => a.topic === id).length;
-  };
-  ["all","quick_commerce","ecommerce","fmcg","funding","retail_tech"].forEach(set);
+  ["all","quick_commerce","ecommerce","fmcg","funding","retail_tech"].forEach(id => {
+    const el = document.getElementById("n-"+id);
+    if (el) el.textContent = id==="all" ? all.length : all.filter(a=>a.topic===id).length;
+  });
 }
 
-/* ── SEARCH ─────────────────────────────────── */
-const sIn = document.getElementById("searchIn");
-const sX  = document.getElementById("searchX");
-sIn.oninput = () => {
-  searchQ = sIn.value.trim().toLowerCase();
-  sX.classList.toggle("on", searchQ.length > 0);
+/* ─── SEARCH ─────────────────────────────────────── */
+$("searchIn").oninput = function(){
+  sq = this.value.trim().toLowerCase();
+  $("sx").classList.toggle("on", sq.length>0);
   render();
 };
-sX.onclick = () => {
-  sIn.value = ""; searchQ = "";
-  sX.classList.remove("on");
-  sIn.focus(); render();
+$("sx").onclick = ()=>{
+  $("searchIn").value=""; sq="";
+  $("sx").classList.remove("on");
+  $("searchIn").focus(); render();
 };
 
-/* ── REFRESH ────────────────────────────────── */
-document.getElementById("refreshBtn").onclick = () => load();
+/* ─── REFRESH ────────────────────────────────────── */
+$("rbtn").onclick = load;
 
-/* ── STATUS ─────────────────────────────────── */
-function setStatus(state, msg) {
-  const dot = document.getElementById("statusDot");
-  const txt = document.getElementById("statusTxt");
-  if (state === "loading") {
-    dot.style.background = "#f59e0b";
-    txt.textContent = "Fetching…";
-  } else if (state === "live") {
-    dot.style.background = "#4ade80";
-    txt.textContent = msg || "Live";
-  } else {
-    dot.style.background = "#f87171";
-    txt.textContent = "Error";
-  }
+/* ─── UI HELPERS ─────────────────────────────────── */
+function $(id){return document.getElementById(id)}
+
+function setUI(state) {
+  $("loadEl").style.display    = state==="loading" ? "flex"  : "none";
+  $("errEl").style.display     = state==="error"   ? "block" : "none";
+  $("contentEl").style.display = state==="content" ? "block" : "none";
 }
 
-function showError(msg) {
-  document.getElementById("loadingEl").style.display = "none";
-  const e = document.getElementById("errorEl");
-  e.style.display = "block";
-  e.textContent = "⚠ " + msg;
+function showError(html) {
+  const el = $("errEl");
+  el.innerHTML = `<strong>⚠ Could not load news</strong>${html}`;
+  setUI("error");
   setStatus("error");
 }
 
-/* ── HELPERS ────────────────────────────────── */
-function esc(s) {
-  if (!s) return "";
-  return String(s)
-    .replace(/&/g,"&amp;").replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+function setStatus(state, msg) {
+  const dot = $("sDot"), txt = $("sTxt");
+  if (state==="loading"){ dot.style.background="#f59e0b"; txt.textContent="Fetching…"; }
+  else if (state==="live"){ dot.style.background="#4ade80"; dot.style.animation="pulse 2s ease infinite"; txt.textContent=msg||"Live"; }
+  else { dot.style.background="#f87171"; dot.style.animation="none"; txt.textContent="Error"; }
 }
 
-function fmtDate(s, long) {
-  if (!s) return "";
-  try {
-    const dt  = new Date(s);
-    if (long) return dt.toLocaleString("en-IN",{day:"numeric",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit"});
-    const diff = Date.now() - dt;
-    const m = Math.round(diff/60000);
-    if (m < 60)   return m + "m ago";
-    if (m < 1440) return Math.round(m/60) + "h ago";
+function setProgress(pct){
+  $("progBar").style.width = pct + "%";
+}
+
+function esc(s){
+  if(!s) return "";
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+function fmt(s, long){
+  if(!s) return "";
+  try{
+    const dt=new Date(s);
+    if(long) return dt.toLocaleString("en-IN",{day:"numeric",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit"});
+    const m=Math.round((Date.now()-dt)/60000);
+    if(m<60) return m+"m ago";
+    if(m<1440) return Math.round(m/60)+"h ago";
     return dt.toLocaleDateString("en-IN",{day:"numeric",month:"short"});
-  } catch { return ""; }
+  }catch{return "";}
 }
 
-function freshBadge(s) {
-  if (!s) return "";
-  const h = (Date.now() - new Date(s)) / 3600000;
-  if (h < 3)  return '<span class="badge fresh-new">NEW</span>';
-  if (h < 12) return '<span class="badge fresh-today">TODAY</span>';
+function badge(s){
+  if(!s) return "";
+  const h=(Date.now()-new Date(s))/3600000;
+  if(h<3)  return '<span class="badge fn">NEW</span>';
+  if(h<12) return '<span class="badge ft">TODAY</span>';
   return "";
 }
 
-function chipHtml(topicId) {
-  if (!topicId) return "";
-  const labels = {quick_commerce:"Quick Commerce",ecommerce:"E-Commerce",fmcg:"FMCG",funding:"Funding",retail_tech:"Retail Tech"};
-  const c = TOPIC_COLORS[topicId] || {bg:"var(--surface-2)",color:"var(--muted)"};
-  return `<div class="chips"><span class="chip" style="background:${c.bg};color:${c.color}">${labels[topicId]||topicId}</span></div>`;
+function chip(id){
+  const t=TOPICS.find(t=>t.id===id);
+  if(!t) return "";
+  return `<div class="chips"><span class="chip" style="background:${t.bg};color:${t.color}">${t.label}</span></div>`;
 }
 
-/* ── BOOT ───────────────────────────────────── */
+/* ─── BOOT ───────────────────────────────────────── */
 load();
-
 })();
 </script>
 </body>
