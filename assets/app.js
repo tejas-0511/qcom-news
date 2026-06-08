@@ -51,7 +51,6 @@
       updateLastUpdated(articlesData.generated_at);
       buildTopicTabs();
       renderAll();
-      buildTicker();
 
       const hasFallback = allArticles.some(a => a.is_fallback);
       if (hasFallback) showFallbackBanner();
@@ -178,7 +177,7 @@
         <span class="featured-source">${esc(article.source)}</span>
         <span>${formatDate(article.published_at)}</span>
         ${renderTopicChips(article.topics)}
-        <a class="featured-cta" href="${esc(article.url)}" target="_blank" rel="noopener">
+        <a class="featured-cta" href="${article.url}" target="_blank" rel="noopener noreferrer">
           Read Article →
         </a>
       </div>
@@ -306,7 +305,7 @@
         ${freshnessBadge(article.published_at)}
       </div>
       ${ article.summary ? `<div class="modal-summary">${esc(article.summary)}</div>` : "" }
-      <a class="modal-cta" href="${esc(article.url)}" target="_blank" rel="noopener">
+      <a class="modal-cta" href="${article.url}" target="_blank" rel="noopener noreferrer">
         Read Full Article ↗
       </a>
     `;
@@ -328,13 +327,6 @@
   document.addEventListener("keydown", e => {
     if (e.key === "Escape") closeModal();
   });
-
-  /* ── TICKER ───────────────────────────────────── */
-  function buildTicker() {
-    const track = document.getElementById("tickerTrack");
-    const titles = allArticles.slice(0, 12).map(a => a.title).join("   ·   ");
-    track.textContent = titles || "No headlines today";
-  }
 
   /* ── SEARCH ───────────────────────────────────── */
   const searchInput = document.getElementById("searchInput");
